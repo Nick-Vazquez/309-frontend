@@ -13,11 +13,11 @@ class TaskList extends Component {
     async componentDidMount() {
         await fetch('/task')
             .then(response => response.json())
-            .then(data => this.setState({tasks: data}));
+            .then(data => this.setState({ tasks: data }));
     }
 
     async remove(id) {
-        await fetch(`/clients/${id}`, {
+        await fetch(`/task/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -25,12 +25,12 @@ class TaskList extends Component {
             }
         }).then(() => {
             let updatedTasks = [...this.state.tasks].filter(i => i.id !== id);
-            this.setState({tasks: updatedTasks});
+            this.setState({ tasks: updatedTasks });
         });
     }
 
     render() {
-        const {tasks, isLoading} = this.state;
+        const { tasks, isLoading } = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -39,13 +39,19 @@ class TaskList extends Component {
         const taskList = tasks.map(task => {
             // An item returned for each task found.
             return (
-                <div className={"placeholder"}></div>
+                <div className={"placeholder"}>
+                    <label>
+                        <input type="checkbox"></input>
+                        {tasks.name}
+                    </label>
+                </div>
             )
         });
 
         return (
             <div className={"placeholder"}>
-
+                <h3>Tasks</h3>
+                {taskList}
             </div>
         )
     }
