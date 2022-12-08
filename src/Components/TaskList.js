@@ -17,7 +17,7 @@ class TaskList extends Component {
     }
 
     async remove(id) {
-        await fetch(`/clients/${id}`, {
+        await fetch(`/task/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
