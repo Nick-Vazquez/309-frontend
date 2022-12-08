@@ -8,10 +8,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <AppNavbar/>
-                <Container fluid>
-                    <Button color="link"><Link to="/tasks">Tasks</Link></Button>
-                </Container>
+                <AppNavbar />
             </div>
         );
     }

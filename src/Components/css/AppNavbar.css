@@ -1,0 +1,14 @@
+.navItem {
+    margin: 5px;
+    font-weight: bolder;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.navTitle {
+    margin: 5px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+    text-decoration: none; 
+}
