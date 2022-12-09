@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
 
 class TaskList extends Component {
     constructor(props) {
@@ -13,7 +10,7 @@ class TaskList extends Component {
     async componentDidMount() {
         await fetch('/task')
             .then(response => response.json())
-            .then(data => this.setState({tasks: data}));
+            .then(data => this.setState({ tasks: data }));
     }
 
     async remove(id) {
@@ -25,12 +22,12 @@ class TaskList extends Component {
             }
         }).then(() => {
             let updatedTasks = [...this.state.tasks].filter(i => i.id !== id);
-            this.setState({tasks: updatedTasks});
+            this.setState({ tasks: updatedTasks });
         });
     }
 
     render() {
-        const {tasks, isLoading} = this.state;
+        const { tasks, isLoading } = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -39,13 +36,20 @@ class TaskList extends Component {
         const taskList = tasks.map(task => {
             // An item returned for each task found.
             return (
-                <div className={"placeholder"}></div>
+                <div className={"placeholder"}>
+                    <label>
+                        <input type="checkbox"></input>
+                        {task.name}
+                        <button onClick={() => this.remove(task.id)}>Delete</button>
+                    </label>
+                </div>
             )
         });
 
         return (
             <div className={"placeholder"}>
-
+                <h3>Tasks</h3>
+                {taskList}
             </div>
         )
     }

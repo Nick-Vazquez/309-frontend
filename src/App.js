@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
 import Home from "./Components/Home";
 import TaskList from "./Components/TaskList"
-import TaskEdit from "./Components/TaskEdit";
+import TaskEdit from "./Pages/TaskEdit";
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <Routes>
             <Route path='/' exact={true} element={<Home />}/>
             <Route path='/tasks' exact={true} element={<TaskList />}/>
-            <Route path='/tasks/:id' component={<TaskEdit />}/>
+            <Route path='/tasks/:id' element={<TaskEdit />}/>
           </Routes>
         </Router>
     );
