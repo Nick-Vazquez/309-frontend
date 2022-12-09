@@ -11,6 +11,7 @@ class TaskList extends Component {
     }
 
     async componentDidMount() {
+        document.title = "Tasks"
         await fetch('/task')
             .then(response => response.json())
             .then(data => this.setState({ tasks: data }));

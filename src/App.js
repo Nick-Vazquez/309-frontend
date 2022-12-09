@@ -5,6 +5,8 @@ import Home from "./Components/Home";
 import TaskList from "./Components/TaskList"
 import Login from "./Components/Login"
 import TaskEdit from "./Components/TaskEdit";
+import SignUp from "./Components/SignUp";
+
 
 class App extends Component {
   render() {
@@ -15,6 +17,7 @@ class App extends Component {
           <Route path='/tasks' exact={true} element={<TaskList />} />
           <Route path='/tasks/:id' element={<TaskEdit />} />
           <Route path='/login' exact={true} element={<Login />} />
+          <Route path='/signup' exact={true} element={<SignUp />} />
         </Routes>
       </Router>
     );
