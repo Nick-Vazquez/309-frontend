@@ -1,77 +1,35 @@
-import React, { useState } from "react";
+import React, { Component } from 'react';
+import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import AppNavbar from './AppNavbar';
+import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
-import Form from "react-bootstrap/Form";
 
-import Button from "react-bootstrap/Button";
 
-export default function Login() {
+class Login extends Component {
+    render() {
+        return (
+            <div className={"placeholder"}>
+                <AppNavbar />
 
-    const [email, setEmail] = useState("");
+                <Container>
+                    <div style={{ padding: 3 }}>
+                        <Form.Label htmlFor="inputPassword5" style={{ padding: 3 }}>Username</Form.Label>
+                        <Form.Control
+                        />
 
-    const [password, setPassword] = useState("");
-
-    function validateForm() {
-
-        return email.length > 0 && password.length > 0;
-
+                    </div>
+                    <div style={{ padding: 3 }}>
+                        <Form.Label htmlFor="inputPassword5" style={{ padding: 3 }}>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                </Container>
+            </div>
+        );
     }
-
-    function handleSubmit(event) {
-
-        event.preventDefault();
-
-    }
-
-    return (
-
-        <div className="Login">
-
-            <Form onSubmit={handleSubmit}>
-
-                <Form.Group size="lg" controlId="email">
-
-                    <Form.Label>Email</Form.Label>
-
-                    <Form.Control
-
-                        autoFocus
-
-                        type="email"
-
-                        value={email}
-
-                        onChange={(e) => setEmail(e.target.value)}
-
-                    />
-
-                </Form.Group>
-
-                <Form.Group size="lg" controlId="password">
-
-                    <Form.Label>Password</Form.Label>
-
-                    <Form.Control
-
-                        type="password"
-
-                        value={password}
-
-                        onChange={(e) => setPassword(e.target.value)}
-
-                    />
-
-                </Form.Group>
-
-                <Button block size="lg" type="submit" disabled={!validateForm()}>
-
-                    Login
-
-                </Button>
-
-            </Form>
-
-        </div>
-
-    );
-
 }
+export default Login;

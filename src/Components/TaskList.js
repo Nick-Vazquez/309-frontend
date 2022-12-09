@@ -13,7 +13,7 @@ class TaskList extends Component {
     async componentDidMount() {
         await fetch('/task')
             .then(response => response.json())
-            .then(data => this.setState({tasks: data}));
+            .then(data => this.setState({ tasks: data }));
     }
 
     async remove(id) {
@@ -25,12 +25,12 @@ class TaskList extends Component {
             }
         }).then(() => {
             let updatedTasks = [...this.state.tasks].filter(i => i.id !== id);
-            this.setState({tasks: updatedTasks});
+            this.setState({ tasks: updatedTasks });
         });
     }
 
     render() {
-        const {tasks, isLoading} = this.state;
+        const { tasks, isLoading } = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -45,6 +45,7 @@ class TaskList extends Component {
 
         return (
             <div className={"placeholder"}>
+                <AppNavbar />
 
             </div>
         )

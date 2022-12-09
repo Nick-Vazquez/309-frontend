@@ -13,8 +13,8 @@ class App extends Component {
         <Routes>
           <Route path='/' exact={true} element={<Home />} />
           <Route path='/tasks' exact={true} element={<TaskList />} />
-          <Route path='/tasks/:id' component={<TaskEdit />} />
-          <Route path='/login' exact={true} component={<Login />} />
+          <Route path='/tasks/:id' element={<TaskEdit />} />
+          <Route path='/login' exact={true} element={<Login />} />
         </Routes>
       </Router>
     );
