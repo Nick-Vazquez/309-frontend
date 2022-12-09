@@ -85,7 +85,7 @@ const TaskEdit = () => {
                     </FormGroup>
                     <FormGroup>
                         <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" tag={Link} to="/clients">Cancel</Button>
+                        <Button color="secondary" tag={Link} to="/tasks">Cancel</Button>
                     </FormGroup>
                 </Form>
             </Container>
