@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Button, Container, Table } from "reactstrap";
 
 class TaskList extends Component {
     constructor(props) {
@@ -29,6 +28,16 @@ class TaskList extends Component {
         });
     }
 
+    async complete(taskID) {
+        await fetch(`/task/${taskID}?completingUserId=7`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+    }
+
     render() {
         const { tasks, isLoading } = this.state;
 
@@ -39,21 +48,48 @@ class TaskList extends Component {
         const taskList = tasks.map(task => {
             // An item returned for each task found.
             return (
-                <div className={"placeholder"}>
-                    <label>
-                        <input type="checkbox"></input>
-                        {tasks.name}
-                    </label>
-                </div>
+                <tr key={task.id}>
+                    <td>{task.id}</td>
+                    <td>
+                        <input type="checkbox" name={"taskName"}
+                               onChange={() => this.complete(task.id)}
+                            defaultChecked={task.status === "COMPLETED"}></input>
+                    </td>
+                    <td>{task.name}</td>
+                    <td>{task.storyPoints}</td>
+                    <td>
+                        <Link className={'px-2'} to={`/tasks/${task.id}`}>
+                            <Button type={"button"}>Edit</Button>
+                        </Link>
+                        <Button className={'px-2'} onChange={() => this.remove(task.id)}>Delete</Button>
+                    </td>
+                </tr>
             )
         });
 
         return (
-            <div className={"placeholder"}>
+            <Container>
                 <h3>Tasks</h3>
-                {taskList}
-            </div>
+                <Table striped bordered hover>
+                    <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>Completed?</th>
+                        <th>Name</th>
+                        <th>Story Points</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {taskList}
+                    </tbody>
+                </Table>
+                <Link to={"/"}>
+                    <Button>Home</Button>
+                </Link>
+            </Container>
         )
     }
 }
+
 export default TaskList;
